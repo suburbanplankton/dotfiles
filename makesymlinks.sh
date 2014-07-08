@@ -9,10 +9,10 @@ dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 
 # list of files to symlink in home directory
-files="bashrc bash_profile profile display minttyrc gitconfig vimrc gvimrc"
+files="bash_profile bashrc display gitconfig minttyrc profile vimrc" # gvimrc
 
 # list of folders to symlink in home directory
-files="$files vim"
+folders="vim"
 
 ##########
 
@@ -29,9 +29,20 @@ for file in $files; do
     if [ -f ~/.$file ]; then
         mv ~/.$file ~/dotfiles_old/
 		ln -s $dir/$file ~/.$file
-        echo "Moving ~/.$file to $olddir, and creating symlink to $dir/$file."
+                echo "Moving ~/.$file to $olddir, and creating symlink to $dir/$file."
 	else
-        ln -s $dir/$file ~/.$file
+                ln -s $dir/$file ~/.$file
+		echo "Creating symlink ~/.$file to $dir/$file."
+    fi
+done
+
+for folder in $folders; do
+    if [ -f ~/.$file ]; then
+        mv ~/.$file ~/dotfiles_old/
+		ln -s $(realpath dir)/$file ~/.$file
+                echo "Moving ~/.$file to $olddir, and creating symlink to $dir/$file."
+	else
+                ln -s $(realpath dir)/$file ~/.$file
 		echo "Creating symlink ~/.$file to $dir/$file."
     fi
 done
