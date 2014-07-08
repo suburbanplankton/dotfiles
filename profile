@@ -22,5 +22,3 @@ if [ -d "$HOME/usr/lib/" ]; then
   LD_RUN_PATH="$LD_RUN_PATH:$HOME/usr/lib"
 fi
 export LD_RUN_PATH
-
-export DISPLAY=:0.0

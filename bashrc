@@ -1,7 +1,6 @@
 shopt -s histappend
 #
-#PS1='[\u@\h \W]\$ ' 
-PS1='\[\e]0;\w\a\]\[\e[32m\]\u@\h \[\e[33m\]\W\[\e[0m\] \$ '
+PS1='\e[0;32m\u@\h \e[0;33m\W \$ \e[m'
 export PS1
 #
 # Aliases
@@ -19,6 +18,8 @@ alias vdir='ls --color=auto --format=long'
 alias grep='grep --color'                     # show differences in colour
 alias egrep='egrep --color=auto'              # show differences in colour
 alias fgrep='fgrep --color=auto'              # show differences in colour 
+#
+alias vi=vim
 #
 if [ -f "/etc/bashrc" ] ; then
 	source /etc/bashrc
