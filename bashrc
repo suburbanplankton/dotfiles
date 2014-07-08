@@ -18,8 +18,12 @@ alias grep='grep --color'                     # show differences in colour
 alias egrep='egrep --color=auto'              # show differences in colour
 alias fgrep='fgrep --color=auto'              # show differences in colour 
 #
-alias vi=vim
+alias vi='vim'
+#
+if [ `grep Cygwin /etc/issue|wc -l` == 1 ]; then
+    alias ping='$SYSTEMROOT/system32/ping'
+fi
 #
 if [ -f "/etc/bashrc" ] ; then
-	source /etc/bashrc
+    source /etc/bashrc
 fi
