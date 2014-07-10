@@ -1,4 +1,21 @@
+shopt -s cmdhist
 shopt -s histappend
+
+if [ -f "/etc/bashrc" ] ; then
+    source /etc/bashrc
+fi
+
+function linuxdistro() {
+    if [ `grep Cygwin /etc/issue|wc -l` == 1 ]; then
+        echo "cygwin"
+    elif [ `grep Oracle /etc/issue|wc -l` == 1 ]; then
+        echo "oel"
+    elif [ `grep 'Red Hat' /etc/issue|wc -l` == 1 ]; then
+        echo "rhel"
+    else
+        echo "linux"
+    fi
+}
 
 # PS1='\[e]0;\w\a]\[\033[38;5;002m\]\u@\h \[\033[38;5;003m\]\W \$ \[\033[m\]' #256 color mode
 PS1='\[\e]0;\w\a\]\[\e[0;32m\]\u@\h \[\e[0;33m\]\W \$ \[\e[m\]'
@@ -24,14 +41,18 @@ alias vi='vim'
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 
-if [ `grep Cygwin /etc/issue|wc -l` == 1 ]; then
-    alias ping='$SYSTEMROOT/system32/ping'
-fi
+case `linuxdistro` in
+cygwin)
+    alias ping='$SYSTEMROOT/system32/ping
+    ';;
+esac
 
 # LESS man page colors (makes Man pages more readable).
-if [ `grep Cygwin /etc/issue|wc -l` == 1 ]; then
+case `linuxdistro` in
+cygwin)
     export PAGER=most
-else
+    ;;
+*)
     export LESS_TERMCAP_mb=$'\E[01;31m'
     export LESS_TERMCAP_md=$'\E[01;31m'
     export LESS_TERMCAP_me=$'\E[0m'
@@ -39,8 +60,6 @@ else
     export LESS_TERMCAP_so=$'\E[01;44;33m'
     export LESS_TERMCAP_ue=$'\E[0m'
     export LESS_TERMCAP_us=$'\E[01;32m'
-fi
+    ;;
+esac
 
-if [ -f "/etc/bashrc" ] ; then
-    source /etc/bashrc
-fi
