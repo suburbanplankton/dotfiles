@@ -47,7 +47,7 @@ cygwin)
     ';;
 esac
 
-# LESS man page colors (makes Man pages more readable).
+# LESS man page colors (makes man pages more readable).
 case `linuxdistro` in
 cygwin)
     export PAGER=most
