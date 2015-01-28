@@ -43,8 +43,8 @@ alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 
 case `linuxdistro` in
 cygwin)
-    alias ping='$SYSTEMROOT/system32/ping
-    ';;
+    alias ping='$SYSTEMROOT/system32/ping'
+    ;;
 esac
 
 # LESS man page colors (makes man pages more readable).
