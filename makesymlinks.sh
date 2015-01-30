@@ -35,6 +35,6 @@ for file in $files; do
             echo "Moving ~/.$file to $olddir."
         fi
         echo "Creating symbolic link ~/.$file to $dir/$file."
-        ln -s $(realpath $dir)/$file ~/.$file
+        ln -s $dir/$file ~/.$file
     echo 
 done
