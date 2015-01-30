@@ -17,7 +17,4 @@ set cursorline
 
 set incsearch
 
-set smartindent
-set autoindent
-
 set ruler
